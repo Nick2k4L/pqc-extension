@@ -140,27 +140,27 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	router.ServeHTTP(w, r)
 }
 
-func main() {
+// func main() {
 
-	// err := godotenv.Load()
+// 	// err := godotenv.Load()
 
-	// if err != nil {
-	// 	fmt.Println("Error Loading .env file")
-	// 	return
-	// }
-	router := gin.Default()
+// 	// if err != nil {
+// 	// 	fmt.Println("Error Loading .env file")
+// 	// 	return
+// 	// }
+// 	router := gin.Default()
 
-	router = setCorsPermission(router)
+// 	router = setCorsPermission(router)
 
-	router.GET("/pqc", func(c *gin.Context) {
+// 	router.GET("/pqc", func(c *gin.Context) {
 
-		// Grabbing the host name from the query param!!!!
-		hostname := c.Query("hostname")
-		if hostname == "" {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "hostname parameter is required"})
-			return
-		}
-		sendPostRequest(hostname, c)
-	})
-	router.Run(":8080")
-}
+// 		// Grabbing the host name from the query param!!!!
+// 		hostname := c.Query("hostname")
+// 		if hostname == "" {
+// 			c.JSON(http.StatusBadRequest, gin.H{"error": "hostname parameter is required"})
+// 			return
+// 		}
+// 		sendPostRequest(hostname, c)
+// 	})
+// 	router.Run(":8080")
+// }
