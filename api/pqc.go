@@ -29,9 +29,6 @@ type Payload struct {
 	Port     string `json:"port"`
 }
 
-// TODO: Need to figure out a way for the backend to "GET" user hostname and port,
-// Then send in the POST request based on that
-
 // This function sends our POST request to the api
 func sendPostRequest(hostname string, c *gin.Context) {
 
