@@ -5,10 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lpernett/godotenv"
 )
 
 type APIResponse struct {
@@ -37,12 +35,12 @@ type Payload struct {
 // This function sends our POST request to the api
 func sendPostRequest(hostname string, c *gin.Context) {
 
-	err := godotenv.Load()
+	// err := godotenv.Load()
 
-	if err != nil {
-		fmt.Println("Error Loading .env file")
-		return
-	}
+	// if err != nil {
+	// 	fmt.Println("Error Loading .env file")
+	// 	return
+	// }
 
 	// Need to give it a Hostname & Port to run on
 	payload := Payload{
@@ -59,7 +57,7 @@ func sendPostRequest(hostname string, c *gin.Context) {
 		return
 	}
 
-	externalURL := os.Getenv("EXTERNAL_URL")
+	externalURL := "https://certificatetools.com/api/openssl/PQCTest"
 
 	// We are preparing a new HTTP POST request,
 	// Method: "POST", URL: "externalURL", Body: "converts JSON bytes into readable streams"
@@ -131,12 +129,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	router = setCorsPermission(router)
 
 	router.GET("/pqc", func(c *gin.Context) {
-		hostname := c.Query("hostname")
-		if hostname == "" {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "hostname parameter is required"})
-			return
-		}
-		sendPostRequest(hostname, c)
+		// hostname := c.Query("hostname")
+		// if hostname == "" {
+		// 	c.JSON(http.StatusBadRequest, gin.H{"error": "hostname parameter is required"})
+		// 	return
+		// }
+		sendPostRequest("google.com", c)
 	})
 
 	router.ServeHTTP(w, r)
@@ -144,12 +142,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	err := godotenv.Load()
+	// err := godotenv.Load()
 
-	if err != nil {
-		fmt.Println("Error Loading .env file")
-		return
-	}
+	// if err != nil {
+	// 	fmt.Println("Error Loading .env file")
+	// 	return
+	// }
 	router := gin.Default()
 
 	router = setCorsPermission(router)
