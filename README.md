@@ -210,4 +210,5 @@ cd "CPT_S 428/Comet3"
 
 ---
 
-**Need help?** Contact the team lead: [David Tran](mailto:david.tran1@wsu.edu)
+**Need help?** Contact the team lead: [David Tran](mailto:david.tran1@wsu.edu) 
+
