@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/pqc.go": {
-      "runtime": "@vercel/go"
+      "runtime": "go1.x"
     }
   },
   "routes": [
