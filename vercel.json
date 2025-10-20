@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/pqc.go": {
+      "runtime": "@vercel/go"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/pqc",
+      "dest": "/api/pqc.go"
+    }
+  ]
+}
