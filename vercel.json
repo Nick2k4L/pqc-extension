@@ -1,14 +1,10 @@
 {
     "functions": {
         "server/main.go": {
-            "runtime": "go1.x"
+            "runtime": "@vercel/go"
         }
     },
     "routes": [
-        {
-            "src": "/pqc",
-            "dest": "/server/main.go"
-        },
         {
             "src": "/(.*)",
             "dest": "/server/main.go"
