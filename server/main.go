@@ -129,12 +129,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	router = setCorsPermission(router)
 
 	router.GET("/pqc", func(c *gin.Context) {
-		// hostname := c.Query("hostname")
-		// if hostname == "" {
-		// 	c.JSON(http.StatusBadRequest, gin.H{"error": "hostname parameter is required"})
-		// 	return
-		// }
-		sendPostRequest("google.com", c)
+		hostname := c.Query("hostname")
+		if hostname == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "hostname parameter is required"})
+			return
+		}
+		sendPostRequest(hostname, c)
 	})
 
 	router.ServeHTTP(w, r)
