@@ -1,9 +1,17 @@
 {
-    "trailingSlash": false,
-    "rewrites":[
+    "functions": {
+        "server/main.go": {
+            "runtime": "go1.x"
+        }
+    },
+    "routes": [
         {
-            "source": "/server(.*)",
-            "destination":"/server/main.go"
+            "src": "/pqc",
+            "dest": "/server/main.go"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/server/main.go"
         }
     ]
 }
