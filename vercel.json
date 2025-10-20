@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/pqc.go": {
+    "api/*.go": {
       "runtime": "go1.x"
     }
   },
