@@ -11,10 +11,6 @@ import (
 	"github.com/lpernett/godotenv"
 )
 
-var (
-	app *gin.Engine
-)
-
 type APIResponse struct {
 	Response ResponseBody `json:"response"`
 }
@@ -130,28 +126,23 @@ func setCorsPermission(router *gin.Engine) *gin.Engine {
 
 }
 
-func init() {
-	app = gin.Default()
-	app = setCorsPermission(app)
-	app.GET("/pqc", func(c *gin.Context) {
-		// hostname := c.Query("hostname")
-		// if hostname == "" {
-		// 	c.JSON(http.StatusBadRequest, gin.H{"error": "hostname parameter is required"})
-		// 	return
-		// }
-		sendPostRequest("google.com", c)
+func Handler(w http.ResponseWriter, r *http.Request) {
+	router := gin.Default()
+	router = setCorsPermission(router)
+
+	router.GET("/pqc", func(c *gin.Context) {
+		hostname := c.Query("hostname")
+		if hostname == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "hostname parameter is required"})
+			return
+		}
+		sendPostRequest(hostname, c)
 	})
 
-}
-
-func Handler(w http.ResponseWriter, r *http.Request) {
-	app.ServeHTTP(w, r)
+	router.ServeHTTP(w, r)
 }
 
 func main() {
-	router := gin.Default()
-
-	router = setCorsPermission(router)
 
 	err := godotenv.Load()
 
@@ -159,6 +150,9 @@ func main() {
 		fmt.Println("Error Loading .env file")
 		return
 	}
+	router := gin.Default()
+
+	router = setCorsPermission(router)
 
 	router.GET("/pqc", func(c *gin.Context) {
 
