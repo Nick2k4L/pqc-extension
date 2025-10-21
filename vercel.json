@@ -1,11 +1,14 @@
 {
-  "functions": {
-    
-  },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/pqc",
-      "dest": "/api/pqc.go"
+      "source": "/api/pqc",
+      "destination": "/api/pqc.go"
     }
-  ]
+  ],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "build": {
+    "env": {
+      "GO_BUILD_FLAGS": "-ldflags '-s -w'"
+    }
+  }
 }
