@@ -124,6 +124,7 @@ func setCorsPermission(router *gin.Engine) *gin.Engine {
 func Handler(w http.ResponseWriter, r *http.Request) {
 	router := gin.Default()
 	router = setCorsPermission(router)
+	router.Group("/api")
 
 	router.GET("/pqc", func(c *gin.Context) {
 		hostname := c.Query("hostname")
