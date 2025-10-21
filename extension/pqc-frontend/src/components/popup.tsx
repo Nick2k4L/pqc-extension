@@ -84,7 +84,7 @@ const PQCChecker: React.FC = () => {
 
         try {
             // now we fetch from our backend
-            const response = await fetch(`http://localhost:8080/pqc?hostname=${encodeURIComponent(hostname)}`)
+            const response = await fetch(`https://pqc-extension.vercel.app/?hostname=${encodeURIComponent(hostname)}`)
 
             // if we do not havw a good response, then we have an error
             if (!response.ok){
